@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team7043.robot;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -43,4 +44,12 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   public XboxController controller = new XboxController(0);
+
+  public Boolean primaryCameraButton() {
+	return controller.getStickButtonPressed(GenericHID.Hand.kLeft);
+  }
+
+  public Boolean secondaryCameraButton() {
+	  return controller.getStickButtonPressed(GenericHID.Hand.kRight);
+  }
 }
