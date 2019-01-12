@@ -40,8 +40,8 @@ public class Robot extends TimedRobot {
   public UsbCamera primaryCamera;
   public UsbCamera secondaryCamera;
   public VideoSink cameraServer;
-  public CvSink cvsink1;
-  public CvSink cvsink2;
+  public CvSink cvsink0 = new CvSink("PrimaryCameraCV");
+  public CvSink cvsink1 = new CvSink("SecondaryCameraCV");
   
   Command driveTrainCommand = new DriveCommand();
 
@@ -53,18 +53,20 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     refOI = new OI();
     
-    primaryCamera = CameraServer.getInstance().startAutomaticCapture(0);
-    secondaryCamera = CameraServer.getInstance().startAutomaticCapture(1);
 	cameraServer = CameraServer.getInstance().getServer();
-	cvsink1 = new CvSink("PrimaryCameraCV");
-	cvsink1.setSource(primaryCamera);
-	cvsink1.setEnabled(true);
-	cvsink2 = new CvSink("SecondaryCameraCV");
-	cvsink2.setSource(secondaryCamera);
-	cvsink2.setEnabled(true);
+	primaryCamera = addCamera(0, cvsink0);
+    secondaryCamera = addCamera(1, cvsink1);
     
     RobotMap.leftDrive.setInverted(true);
 	RobotMap.robotDriveMain = new DifferentialDrive(RobotMap.leftDrive, RobotMap.rightDrive);
+  }
+  
+  public UsbCamera addCamera(int id, CvSink sink) {
+	UsbCamera cam = CameraServer.getInstance().startAutomaticCapture(0);
+	sink.setSource(cam);
+	sink.setEnabled(true);
+	  
+	return cam;
   }
 
   /**
