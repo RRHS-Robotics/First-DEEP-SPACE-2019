@@ -1,5 +1,14 @@
 # First-DeepSpace-2019
 
+
+## Usage
+Use Visual Studio Code to edit these files
+
+Download it here
+https://code.visualstudio.com/
+
+We are using VSCode this year, but the project will also work on eclipse
+
 To run on robot:
 
 1. Fully set up VSCode, WPILib, and necessary libraries
