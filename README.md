@@ -1,7 +1,17 @@
 # First-DeepSpace-2019
 
-## Usage
-Use Visual Studio Code to edit these files
+To run on robot:
 
-Download it here
-https://code.visualstudio.com/
+1. Fully set up VSCode, WPILib, and necessary libraries
+2. Clone this repository
+3. Open folder (or project) (from cloned repository) in VSCode (or Eclipse)
+4. Turn on robot and connect to its WiFi signal
+
+VSCODE USERS:
+5. Click the WPILib extension widget
+6. Type in "deploy" or "debug" or "build", depending on your intent.
+7. Select the correct option.
+
+ECLIPSE USERS:
+5. Right-Click the project (RRHSRobotics2018) in the Project Explorer
+6. Hover over Run As, then click WPILib Java Deploy
