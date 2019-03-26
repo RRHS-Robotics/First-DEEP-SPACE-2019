@@ -38,8 +38,7 @@ public class RobotMap {
 	//END Drive Motor Map
 	
 	//Start Solenoid Map
-	public static Solenoid pn = new Solenoid(6, 0);
-	public static Solenoid pn2 = new Solenoid(6, 1);
+	public static Solenoid pn = new Solenoid(6, 1);
 	//End Solenoid Map
 	
 	//Start Pulley System Map

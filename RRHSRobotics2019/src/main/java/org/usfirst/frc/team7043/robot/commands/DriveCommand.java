@@ -2,16 +2,15 @@ package org.usfirst.frc.team7043.robot.commands;
 
 import org.usfirst.frc.team7043.robot.Robot;
 
-import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 
 
 public class DriveCommand extends Command {
 	
-	private Double speed;
-	private Double rotation;
-	private Boolean invert = false;
+	private boolean invert = false;
+	private boolean t = false;
 	
 	Preferences prefs = Preferences.getInstance();
     
@@ -27,14 +26,11 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		if(Robot.refOI.invertMotorButton()) { invert = !invert; } 
+		if(Robot.refOI.invertTweakButton()) { t = !t; } 
 		
-		if(speed != null) {
-			Robot.DriveTrain.drive( (invert?-1:1) * speed, rotation);
-		} else {
-			Robot.DriveTrain.drive( 
-				(invert?-1:1) * -Robot.refOI.controller.getY(Hand.kLeft)*prefs.getDouble("Percent of Max Speed (0.0 to 1.0)", 1.0), 
-				Robot.refOI.controller.getX(Hand.kLeft)*prefs.getDouble("Percent of Max Speed (0.0 to 1.0)", 1.0));
-		}
+		Robot.DriveTrain.drive( 
+			(invert?-1:1) * -Robot.refOI.controller.getY(Hand.kLeft)*prefs.getDouble("Percent of Max Speed (0.0 to 1.0)", (t?1:.5)), 
+			-Robot.refOI.controller.getX(Hand.kLeft)*prefs.getDouble("Percent of Max Speed (0.0 to 1.0)", .5));//(t?1:.5)));
     }
 
     // Make this return true when this Command no longer needs to run execute()
