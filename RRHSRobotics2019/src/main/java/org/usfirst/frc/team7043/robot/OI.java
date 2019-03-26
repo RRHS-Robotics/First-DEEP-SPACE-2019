@@ -46,11 +46,14 @@ public class OI {
 	 */
 	
 	public XboxController controller = new XboxController(0);
+
+    Button intakeForward = new JoystickButton(controller, 1);
+    Button intakeReverse = new JoystickButton(controller, 2);
+    Button lowerIntake = new JoystickButton(controller, 5);
+    Button raiseIntake = new JoystickButton(controller, 6);
 	
-	Button intakeForward = new JoystickButton(controller, 1);
-	Button intakeReverse = new JoystickButton(controller, 2);
-	Button lowerIntake = new JoystickButton(controller, 5);
-	Button raiseIntake = new JoystickButton(controller, 6);
+	
+	
 	
 	public boolean invertMotorButton() {
 		return controller.getStartButtonPressed();
@@ -65,6 +68,9 @@ public class OI {
 	}
 	public boolean ballDownMotorButton() {
 		return controller.getAButton();
+	}
+	public boolean invertTweakButton() {
+		return controller.getXButton();
 	}
 	
 	public OI() {

@@ -12,7 +12,7 @@ public class BallMotorCommand extends Command {
 	
 	Preferences prefs = Preferences.getInstance();
 	
-	float a = .5f;
+	float a = 1.0f;
 	
     //TeleMode Constructor
     public BallMotorCommand() {
@@ -25,7 +25,7 @@ public class BallMotorCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.BallMotor.setSpeed((Robot.refOI.ballUpMotorButton()?a:0)+(Robot.refOI.ballDownMotorButton()?-a:0));
+    	Robot.BallMotor.setSpeed((Robot.refOI.ballUpMotorButton()?a:0)+(Robot.refOI.ballDownMotorButton()?-.2:0));
     }
 
     // Make this return true when this Command no longer needs to run execute()
